@@ -12,6 +12,10 @@ let App = {
       .receive("ok", chan => {
         console.log("Welcome to Phoenix Lobby chat!")
 
+        chan.on("message_feed", ({messages}) => {
+          messages.forEach( msg => msgContainer.append(`<br/>${msg.body}`) )
+        })
+
         chan.on("ping", payload => console.log("PING", payload) )
 
         msgInput.off("keypress").on("keypress", e => {
