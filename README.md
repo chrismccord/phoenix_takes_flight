@@ -1,4 +1,4 @@
-# Chat
+# Phoenix Takes Flight - Chat
 
 To start your new Phoenix application:
 
