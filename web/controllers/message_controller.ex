@@ -7,7 +7,7 @@ defmodule Chat.MessageController do
   plug :action
 
   def index(conn, _params) do
-    messages = Repo.all(Message)
+    messages = from(m in Message, limit: 100, order_by: m.inserted_at) |> Repo.all()
     render conn, "index.html", messages: messages
   end
 
@@ -20,7 +20,10 @@ defmodule Chat.MessageController do
     changeset = Message.changeset(%Message{}, message_params)
 
     if changeset.valid? do
-      Repo.insert(changeset)
+      msg = Repo.insert(changeset)
+      Chat.Endpoint.broadcast("rooms:" <> msg.room_id, "new_msg", %{
+        body: msg.body
+      })
 
       conn
       |> put_flash(:info, "Message created successfully.")

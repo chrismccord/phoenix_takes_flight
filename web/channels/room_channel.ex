@@ -16,7 +16,7 @@ defmodule Chat.RoomChannel do
   end
 
   def handle_info(:after_join, socket) do
-    messages = from(msg in Message, limit: 100) |> Repo.all()
+    messages = from(m in Message, limit: 100, order_by: m.inserted_at) |> Repo.all()
     push socket, "message_feed", %{messages: messages}
     {:noreply, socket}
   end
