@@ -17,17 +17,15 @@ let App = {
         msgInput.off("keypress").on("keypress", e => {
           if(e.which === 13){ // enter pressed
             chan.push("new_msg", {body: msgInput.val()})
+                .receive("ok", payload => msgContainer.append(`<br/>me: ${payload.body}`))
+                .after(2000, () => console.log("waiting for 2s") )
+
             msgInput.val("")
           }
         })
 
         chan.on("new_msg", payload => {
-          if(payload.owner){
-            msgContainer.append(`<br/>me: ${payload.body}`)
-          } else {
-            msgContainer.append(`<br/>${payload.body}`)
-          }
-
+          msgContainer.append(`<br/>${payload.body}`)
         })
       })
   }
