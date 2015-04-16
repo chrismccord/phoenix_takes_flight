@@ -1,0 +1,22 @@
+<h2>Show message</h2>
+
+<ul>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @message.body %>
+  </li>
+
+  <li>
+    <strong>UserId:</strong>
+    <%= @message.user_id %>
+  </li>
+
+  <li>
+    <strong>RoomId:</strong>
+    <%= @message.room_id %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: message_path(@conn, :index) %>

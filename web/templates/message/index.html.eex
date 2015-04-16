@@ -1,0 +1,30 @@
+<h2>Messages</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>UserId</th>
+      <th>RoomId</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for message <- @messages do %>
+    <tr>
+      <td><%= message.body %></td>
+      <td><%= message.user_id %></td>
+      <td><%= message.room_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New message", to: message_path(@conn, :new), class: "btn btn-primary" %>
