@@ -17,6 +17,8 @@ defmodule Chat.Router do
 
     get "/", PageController, :index
     get "/hello/:name", HelloController, :hello
+
+    resources "/messages", MessageController
   end
 
   # Other scopes may use custom stacks.
