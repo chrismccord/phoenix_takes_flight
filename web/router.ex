@@ -1,6 +1,10 @@
 defmodule Chat.Router do
   use Phoenix.Router
 
+  socket "/ws", Chat do
+    channel "rooms:*", RoomChannel
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
