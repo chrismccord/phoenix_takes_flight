@@ -26,8 +26,10 @@ defmodule Chat.Router do
     resources "/messages", MessageController
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Chat do
-  #   pipe_through :api
-  # end
+
+  scope "/api/v1", Chat.Api.V1 do
+    pipe_through :api
+
+    resources "/messages", MessageController, except: [:new, :edit]
+  end
 end
