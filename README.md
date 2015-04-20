@@ -1,8 +1,29 @@
 # Phoenix Takes Flight - Chat
 
-To start your new Phoenix application:
+## Set Up
 
-1. Install dependencies with `mix deps.get`
-2. Start Phoenix endpoint with `mix phoenix.server`
+1. `$ git clone`
+2. `cd `
+3. `$ mix deps.get`
+4. `$ npm install`
+5. Configure your postgres credentials in `dev.exs` and `test.exs`
 
-Now you can visit `localhost:4000` from your browser.
+  ```elixir
+  # Configure your database
+  config :chat, Chat.Repo,
+    adapter: Ecto.Adapters.Postgres,
+    username: "postgres",
+    password: "postgres",
+    database: "chat_dev"
+  ```
+6. Create your dev and test database `$ mix ecto.create`
+7. Run the migrations `$ mix ecto.migrate`
+8. Start Phoenix endpoint with `$ mix phoenix.server`
+
+Now you can visit `localhost:4000` from your browser, and if you receive the following output you're all set!
+
+```console
+$ mix phoenix.server
+[info] Running Chat.Endpoint with Cowboy on port 4000 (http)
+19 Apr 22:02:20 - info: compiled 4 files into 2 files in 537ms
+```
