@@ -901,6 +901,7 @@ var App = {
 
       chan.on("new_msg", function (payload) {
         msgContainer.append("<br/>" + payload.body);
+        window.scrollTo(0, $("body").height());
       });
     });
   }
