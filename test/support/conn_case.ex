@@ -22,6 +22,8 @@ defmodule Chat.ConnCase do
 
       # Alias the data repository and import query/model functions
       alias Chat.Repo
+      alias Chat.Message
+      alias Chat.Endpoint
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
