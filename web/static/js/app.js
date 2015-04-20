@@ -30,6 +30,7 @@ let App = {
 
         chan.on("new_msg", payload => {
           msgContainer.append(`<br/>${payload.body}`)
+          window.scrollTo(0, $("body").height())
         })
       })
   }

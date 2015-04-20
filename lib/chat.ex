@@ -11,6 +11,7 @@ defmodule Chat do
       supervisor(Chat.Endpoint, []),
       # Start the Ecto repository
       worker(Chat.Repo, []),
+      worker(Chat.TwitterBot, []),
       # Here you could define other workers and supervisors as children
       # worker(Chat.Worker, [arg1, arg2, arg3]),
     ]
