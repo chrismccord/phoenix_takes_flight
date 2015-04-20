@@ -2,8 +2,8 @@
 
 ## Set Up
 
-1. `$ git clone`
-2. `cd `
+1. `$ git clone git@github.com:chrismccord/phoenix_takes_flight.git chat`
+2. `$ cd chat`
 3. `$ mix deps.get`
 4. `$ npm install`
 5. Configure your postgres credentials in `dev.exs` and `test.exs`
